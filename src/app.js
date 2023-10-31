@@ -8,7 +8,7 @@ const server = http.createServer((request, response) => {
 	console.log(request.url);
 	console.log(url);
 
-	
+
 	if (request.url === '/?hello=') {
 		response.statusCode = 400;
 		response.statusMessage = 'Error';
@@ -31,7 +31,7 @@ const server = http.createServer((request, response) => {
 	if (request.url === '/users') {
 		response.statusCode = 200;
 		response.statusMessage = 'OK';
-		response.writeHead(200,{'Content-Type': 'text/plain'})
+		response.writeHead(200,{'Content-Type': 'application/json'})
 		response.write(getUsers());
 		response.end();
 
