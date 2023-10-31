@@ -8,10 +8,11 @@ const server = http.createServer((request, response) => {
 	console.log(request.url);
 	console.log(url);
 
+	
 	if (request.url === '/?hello=') {
 		response.statusCode = 400;
 		response.statusMessage = 'Error';
-		response.setHeader = 'Content-Type: text/plain';
+		response.writeHead(400,{'Content-Type': 'text/plain'})
 		console.log(`Enter a name`);
 		response.write(`Enter a name`);
 		response.end();
@@ -20,7 +21,7 @@ const server = http.createServer((request, response) => {
 	if (helloValue !== null) {
 		response.statusCode = 200;
 		response.statusMessage = 'OK';
-		response.header = 'Content-Type: text/plain';
+		response.writeHead(200,{'Content-Type': 'text/plain'})
 		console.log(`Hello value is: ${helloValue}`);
 		response.write(`Hello, ${helloValue}`);
 		response.end();
@@ -30,7 +31,7 @@ const server = http.createServer((request, response) => {
 	if (request.url === '/users') {
 		response.statusCode = 200;
 		response.statusMessage = 'OK';
-		response.header = 'Content-Type: application/json';
+		response.writeHead(200,{'Content-Type': 'text/plain'})
 		response.write(getUsers());
 		response.end();
 
@@ -39,7 +40,7 @@ const server = http.createServer((request, response) => {
 	if (request.url !== '/') {
 		response.statusCode = 500;
 		response.statusMessage = 'Error';
-		response.header = 'Content-Type: text/plain';
+		response.writeHead(500,{'Content-Type': 'text/plain'})
 		response.write('Error');
 		response.end();
 		return;
@@ -47,7 +48,7 @@ const server = http.createServer((request, response) => {
 
 	response.statusCode = 200;
 	response.statusMessage = 'OK';
-	response.header = 'Content-Type: text/plain';
+	response.writeHead(200,{'Content-Type': 'text/plain'})
 	response.write('hello');
 	response.end();
 });
