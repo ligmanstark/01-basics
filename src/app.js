@@ -9,7 +9,7 @@ const server = http.createServer((request, response) => {
 	console.log(url);
 
 	if (request.url === '/?hello=') {
-		response.status = 400;
+		response.statusCode = 400;
 		response.statusMessage = 'Error';
 		response.header = 'Content-Type: text/plain';
 		console.log(`Enter a name`);
@@ -18,7 +18,7 @@ const server = http.createServer((request, response) => {
 		return;
 	}
 	if (helloValue !== null) {
-		response.status = 200;
+		response.statusCode = 200;
 		response.statusMessage = 'OK';
 		response.header = 'Content-Type: text/plain';
 		console.log(`Hello value is: ${helloValue}`);
@@ -28,7 +28,7 @@ const server = http.createServer((request, response) => {
 	}
 
 	if (request.url === '/users') {
-		response.status = 200;
+		response.statusCode = 200;
 		response.statusMessage = 'OK';
 		response.header = 'Content-Type: application/json';
 		response.write(getUsers());
@@ -37,7 +37,7 @@ const server = http.createServer((request, response) => {
 		return;
 	}
 	if (request.url !== '/') {
-		response.status = 500;
+		response.statusCode = 500;
 		response.statusMessage = 'Error';
 		response.header = 'Content-Type: text/plain';
 		response.write('Error');
@@ -45,7 +45,7 @@ const server = http.createServer((request, response) => {
 		return;
 	}
 
-	response.status = 200;
+	response.statusCode = 200;
 	response.statusMessage = 'OK';
 	response.header = 'Content-Type: text/plain';
 	response.write('hello');
