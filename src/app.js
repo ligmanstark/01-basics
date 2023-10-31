@@ -11,7 +11,7 @@ const server = http.createServer((request, response) => {
 	if (request.url === '/?hello=') {
 		response.statusCode = 400;
 		response.statusMessage = 'Error';
-		response.header = 'Content-Type: text/plain';
+		response.setHeader = 'Content-Type: text/plain';
 		console.log(`Enter a name`);
 		response.write(`Enter a name`);
 		response.end();
